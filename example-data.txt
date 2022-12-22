@@ -1,0 +1,44 @@
+// data in unparsed form
+{
+    "coord": {"lon":-0.1257,"lat":51.5085},
+    "weather": [
+        {
+            "id":803,
+            "main":"Clouds",
+            "description":"broken clouds",
+            "icon":"04n"
+        }
+    ],
+    "base":"stations",
+    "main":
+    {
+        "temp":284.27,
+        "feels_like":283.89,
+        "temp_min":283.46,
+        "temp_max":285.02,
+        "pressure":1001,
+        "humidity":94
+    },
+    "visibility":10000,
+    "wind":
+        {
+            "speed":3.6,
+            "deg":240
+        },
+        "clouds": {
+            "all":75
+        },"
+        dt":1671724611,
+        "sys":
+        {
+            "type":2,
+            "id":2075535,
+            "country":"GB",
+            "sunrise":1671696256,
+            "sunset":1671724421
+        },
+        "timezone":0,
+        "id":2643743,
+        "name":"London",
+        "cod":200
+    }
