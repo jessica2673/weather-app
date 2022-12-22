@@ -1,0 +1,83 @@
+* {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0;
+    color: rgb(231, 237, 241);
+}
+
+@font-face {
+    font-family: 'Sofia';
+    src: url(Sofia-Regular.ttf)
+}
+
+body {
+    background-image: url("night-background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+h1 {
+    font-family: 'Sofia';
+    font-size: 4.5em;
+}
+
+#search {
+    border-radius: 5px;
+    box-shadow: 0 4px 4px 0px rgba(211, 211, 211, 0.705);
+    border: gray;
+    outline: none;
+    font-size: 1.4em;
+    background-color: rgb(230, 230, 249);
+    color: rgb(0, 0, 96);
+    padding: 4px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+#submitBtn {
+    border-radius: 5px;
+    color: rgb(0, 0, 96);
+    box-shadow: 0 1px 2px 0px rgba(211, 211, 211, 0.705);
+    border: outset;
+    font-size: 1.1em;
+    padding: 5px;
+}
+
+#topGroup {
+    display: flex;
+    gap: 1em;
+    align-items: baseline;
+}
+
+#city {
+    margin-top: 0.7em;
+    font-size: 2.8em;
+}
+
+#date {
+    font-size: 1.2em
+}
+
+#bottomGroup {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    
+}
+
+#icon {
+    height: 4em;
+}
+
+#desc , #temp {
+    font-size: 2.3em;
+}
+
+
+
+
+
+
+
+
+
