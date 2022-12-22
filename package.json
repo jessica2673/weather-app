@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/jessica2673/weather-app/issues"
   },
-  "homepage": "https://github.com/jessica2673/weather-app#readme"
+  "homepage": "https://github.com/jessica2673/weather-app#readme",
+  "devDependencies": {
+    "dotenv-webpack": "^2.0.0"
+  }
 }

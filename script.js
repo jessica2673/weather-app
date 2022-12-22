@@ -1,33 +1,45 @@
 const form = document.getElementById('form');
+const moreInfo = document.getElementById('moreInfo');
+const errorMssg = document.getElementById('error');
 getData("Toronto");
 
 form.addEventListener("submit", e => {
     e.preventDefault();
 
-    getData(document.querySelector('input[name=search]').value);
+    if(document.querySelector('input[name=search]').value != "") {
+        getData(document.querySelector('input[name=search]').value).catch(function (err) {
+            console.log(err);
+            throw new Error();
+          });
+    } else {
+        removeCard();
+        errorMssg.textContent = "Please enter a valid location."
+        throw new Error();
+    }
 })
-
-
 
 async function getData(input) {
     try {
-        const moreInfo = document.getElementById('moreInfo');
-        const card = document.getElementById('card');
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&APPID=[private-key]`);
-        const data = await response.json();
-        card.parentNode.removeChild(card);
-        console.log(data['weather'][0].icon);
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&APPID=[key]`);
+        if(!response.ok) {
+            throw new Error('Network response was not OK');
+        } else {
+            const data = await response.json();
 
-        printData(data);
-    } catch {
-        moreInfo.textContent = "Sorry but that is not a valid location.";
-        throw Error ("Sorry but that is not a valid location.");
+            removeCard()
+            errorMssg.textContent = "";
+            printData(data);
+        }
+    } catch (e) {
+        console.log(e);
+        removeCard()
+        errorMssg.textContent = "Sorry but that is not a valid location.";
+        throw new Error ("Sorry but that is not a valid location.");
     } 
 }
 
 async function printData(data) {
     try {
-        const moreInfo = document.getElementById('moreInfo');
         const city = document.getElementById('city');
 
         const getDate = new Date();
@@ -53,10 +65,12 @@ async function printData(data) {
         card.appendChild(createInfo("Humidity: ", data['main'].humidity, 'moreInfo'));
 
         moreInfo.appendChild(card);
-    } catch {
-        throw Error("Sorry but that is not a valid location.");
-    }
-    
+    } catch (e) {
+        console.log(e); 
+        removeCard()
+        errorMssg.textContent = "Sorry but that is not a valid location.";
+        throw new Error("Sorry but that is not a valid location.");
+    }  
 }
 
 function createInfo(intro, name, c) {
@@ -65,6 +79,13 @@ function createInfo(intro, name, c) {
     newInfo.classList.add(c);
 
     return newInfo;
+}
+
+function removeCard() {
+    const card = document.getElementById('card');
+    if (card != null) {
+        card.parentNode.removeChild(card);
+    }
 }
 
 
