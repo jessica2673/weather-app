@@ -6,6 +6,9 @@ const path = require('path');
      path: path.resolve(__dirname, 'dist'), 
    }, 
   module: { 
+    plugins: [
+        new Dotenv()
+      ],
     rules: [ 
       { // for style
         test: /\.css$/i, 

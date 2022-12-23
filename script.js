@@ -20,7 +20,7 @@ form.addEventListener("submit", e => {
 
 async function getData(input) {
     try {
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&APPID=[key]`);
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&APPID=[private-key]`);
         if(!response.ok) {
             throw new Error('Network response was not OK');
         } else {
@@ -32,7 +32,7 @@ async function getData(input) {
         }
     } catch (e) {
         console.log(e);
-        removeCard()
+        removeCard();
         errorMssg.textContent = "Sorry but that is not a valid location.";
         throw new Error ("Sorry but that is not a valid location.");
     } 
