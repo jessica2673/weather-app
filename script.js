@@ -74,15 +74,15 @@ async function printData(data) {
         desc.textContent = data['weather'][0].description;
 
         if (selector === 0) {
-            temp.textContent = `${data['main'].temp}${unit[selector]}`;
-            card.appendChild(createInfo("Feels like: ", `${data['main'].feels_like}${unit[selector]}`, 'moreInfo'));
-            card.appendChild(createInfo("Min temp: ", `${data['main'].temp_min}${unit[selector]}`, 'moreInfoSmall'));
-            card.appendChild(createInfo("Max temp: ", `${data['main'].temp_max}${unit[selector]}`, 'moreInfoSmall'));
+            temp.textContent = `${ktoF(data['main'].temp)}${unit[selector]}`;
+            card.appendChild(createInfo("Feels like: ", `${ktoF(data['main'].feels_like)}${unit[selector]}`, 'moreInfo'));
+            card.appendChild(createInfo("Min temp: ", `${ktoF(data['main'].temp_min)}${unit[selector]}`, 'moreInfoSmall'));
+            card.appendChild(createInfo("Max temp: ", `${ktoF(data['main'].temp_max)}${unit[selector]}`, 'moreInfoSmall'));
         } else {
-            temp.textContent = `${fToC(data['main'].temp)}${unit[selector]}`;
-            card.appendChild(createInfo("Feels like: ",`${fToC(data['main'].feels_like)}${unit[selector]}`, 'moreInfo'));
-            card.appendChild(createInfo("Min temp: ", `${fToC(data['main'].temp_min)}${unit[selector]}`, 'moreInfoSmall'));
-            card.appendChild(createInfo("Max temp: ", `${fToC(data['main'].temp_max)}${unit[selector]}`, 'moreInfoSmall'));
+            temp.textContent = `${kToC(data['main'].temp)}${unit[selector]}`;
+            card.appendChild(createInfo("Feels like: ",`${kToC(data['main'].feels_like)}${unit[selector]}`, 'moreInfo'));
+            card.appendChild(createInfo("Min temp: ", `${kToC(data['main'].temp_min)}${unit[selector]}`, 'moreInfoSmall'));
+            card.appendChild(createInfo("Max temp: ", `${kToC(data['main'].temp_max)}${unit[selector]}`, 'moreInfoSmall'));
         }
 
         card.appendChild(createInfo("Pressure: ", `${data['main'].pressure}Hg`, 'moreInfo'));
@@ -112,8 +112,12 @@ function removeCard() {
     }
 }
 
-function fToC(temp) {
-    return ((5*(temp - 32))/9).toFixed(2);
+function kToC(temp) {
+    return (temp - 273.15).toFixed(2);
+}
+
+function ktoF(temp) {
+    return ((temp - 273.15)*(9/5) + 32).toFixed(2);
 }
 
 
