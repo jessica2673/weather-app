@@ -68,7 +68,7 @@ async function printData(data) {
         card.setAttribute('id', 'card');
 
         city.textContent = data['name'];
-        date.textContent = `${getDate.getDay()} ${months[getDate.getMonth()]} ${getDate.getFullYear()}, ${getDate.getHours()}:${getDate.getMinutes()}`;
+        date.textContent = `${getDate.getUTCDate()} ${months[getDate.getMonth()]} ${getDate.getFullYear()}, ${getDate.getHours()}:${getDate.getMinutes()}`;
         icon.src=`http://openweathermap.org/img/wn/${data['weather'][0].icon}@2x.png`;
         
         desc.textContent = data['weather'][0].description;
