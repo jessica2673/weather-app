@@ -35,7 +35,7 @@ form.addEventListener("submit", e => {
 
 async function getData(input) {
     try {
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&APPID=$${{env.API_KEY}}`);
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&APPID=${{env.API_KEY}}`);
         if(!response.ok) {
             throw new Error('Network response was not OK');
         } else {
